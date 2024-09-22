@@ -4,8 +4,28 @@
     <router-link to="/Carrello">Carrello</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
-  <router-view />
+  <div id="app">
+    <router-view @add-to-cart="addToCart" :cart="cart" />
+    <router-link v-if="$route.path !== '/Carrello'" to="/carrello"
+      >Vai al Carrello</router-link
+    >
+  </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      cart: [], // Stato del carrello
+    };
+  },
+  methods: {
+    addToCart(product) {
+      this.cart.push(product); // Aggiungi il prodotto al carrello
+      console.log(this.cart); // Controlla che il prodotto sia aggiunto correttamente
+    },
+  },
+};
+</script>
 
 <style>
 #app {
