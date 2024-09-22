@@ -12,10 +12,10 @@
 
 <script>
 export default {
-  props: ['products'],
+  props: ["products"],
   methods: {
     addToCart(product) {
-      this.$emit('add-to-cart', product);
+      this.$emit("add-to-cart", product);
     },
   },
 };
