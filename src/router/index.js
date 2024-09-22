@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import CarrelloView from "../views/CarrelloView.vue";
+import WishList from "../views/WishList.vue";
 
 const routes = [
   {
@@ -22,6 +23,7 @@ const routes = [
     name: "Carrello",
     component: CarrelloView,
   },
+  { path: "/preferiti", name: "preferiti", component: WishList },
 ];
 
 const router = createRouter({

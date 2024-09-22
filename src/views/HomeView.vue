@@ -6,11 +6,13 @@
       <p>{{ product.description }}</p>
       <p>Prezzo: €{{ product.price }}</p>
       <button @click="addToCart(product)">Aggiungi al carrello</button>
+      <button @click="addToWishlist(product)">Aggiungi ai preferiti</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   data() {
     return {
@@ -34,17 +36,21 @@ export default {
           price: 30,
         },
         {
-          id: 3,
+          id: 4,
           name: "Frutta",
-          description: "Descrizione Prodotto 3",
+          description: "Descrizione Prodotto 4",
           price: 30,
         },
       ],
     };
   },
   methods: {
+    ...mapMutations(["add_wishlist", "add_cart"]),
     addToCart(product) {
-      this.$emit("add-to-cart", product);
+      this.add_cart({ product, price: product.price }); // Usa la mutation di Vuex per il carrello
+    },
+    addToWishlist(product) {
+      this.add_wishlist(product); // Usa la mutation di Vuex per la wishlist
     },
   },
 };
