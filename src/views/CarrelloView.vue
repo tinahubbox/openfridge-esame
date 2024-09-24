@@ -3,8 +3,8 @@
     <h1>Il tuo carrello</h1>
     <div v-if="cart && cart.length > 0">
       <ul>
-        <li v-for="(item, index) in cart" :key="index">
-          {{ item.name }} - €{{ item.price }}
+        <li v-for="(item, index) in $store.state.cart" :key="index">
+          {{ item[0] }} - €{{ item[1] }}
           <button @click="removeFromCart(index)">Rimuovi</button>
         </li>
       </ul>
@@ -16,15 +16,17 @@
 
 <script>
 export default {
-  props: ["cart"],
   computed: {
+    cart() {
+      return this.$store.state.cart;
+    },
     total() {
-      return this.cart.reduce((acc, product) => acc + product.price, 0);
+      return this.$store.state.cart.reduce((acc, item) => acc + item[1], 0); // Somma il prezzo (item[1])
     },
   },
   methods: {
     removeFromCart(index) {
-      this.$emit("remove-from-cart", index);
+      this.$store.commit("remove_cart", index); // Usa la mutazione `remove_cart`
     },
   },
 };
