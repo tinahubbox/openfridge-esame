@@ -1,12 +1,32 @@
 <template>
-  <div class="home">
-    <h1>Prodotti Disponibili</h1>
-    <div v-for="product in products" :key="product.id" class="product">
-      <h3>{{ product.name }}</h3>
-      <p>{{ product.description }}</p>
-      <p>Prezzo: €{{ product.price }}</p>
-      <button @click="addToCart(product)">Aggiungi al carrello</button>
-      <button @click="addToWishlist(product)">Aggiungi ai preferiti</button>
+  <div class="home container">
+    <div class="row">
+      <h1>Prodotti Disponibili</h1>
+      <div v-for="product in products" :key="product.id" class="col-md-6 mb-4">
+        <div class="product card">
+          <div class="card-body">
+            <h3 class="card-title">{{ product.name }}</h3>
+            <p class="card-text">{{ product.description }}</p>
+            <p>Prezzo: €{{ product.price }}</p>
+            <div
+              class="button-group d-flex justify-content-center align-items-center"
+            >
+              <button
+                @click="addToCart(product)"
+                class="btn btn-primary fixed-size-btn"
+              >
+                Aggiungi al carrello
+              </button>
+              <button
+                @click="addToWishlist(product)"
+                class="btn btn-secondary fixed-size-btn"
+              >
+                Aggiungi ai preferiti
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -57,9 +77,51 @@ export default {
 </script>
 
 <style scoped>
-.product {
-  border: 1px solid #ddd;
+h1 {
+  color: white;
+  margin-bottom: 40px;
+}
+
+.card-body {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+h3 {
+  color: black !important;
+  font-weight: bold;
+}
+p {
+  color: black !important;
+}
+
+button {
+  background-color: black;
+  border-color: black;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.fixed-size-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px;
-  margin-bottom: 10px;
+  margin: 0;
+}
+
+@media (min-width: 576px) {
+  .button-group {
+    flex-direction: row;
+  }
 }
 </style>

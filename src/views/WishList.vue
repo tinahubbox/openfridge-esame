@@ -1,13 +1,14 @@
 <!-- src/views/WishList.vue -->
 
 <!-- eslint-disable -->
- <template>
+<template>
   <div class="preferiti">
     <h1>I tuoi prodotti preferiti</h1>
     <div v-if="$store.state.favourites && $store.state.favourites.length > 0">
       <ul>
-        <li v-for="(item, index) in $store.state.favourites" :key="index"> 
-          <p>{{ item.name }}</p> <!-- Assumendo che "item" abbia una proprietà "name" -->
+        <li v-for="(item, index) in $store.state.favourites" :key="index">
+          <p>{{ item.name }}</p>
+          <!-- Assumendo che "item" abbia una proprietà "name" -->
         </li>
       </ul>
     </div>
