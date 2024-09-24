@@ -4,7 +4,7 @@
     <div v-if="cart && cart.length > 0">
       <ul>
         <li v-for="(item, index) in $store.state.cart" :key="index">
-          {{ item[0] }} - €{{ item[1] }}
+          {{ item[0].name }} - €{{ item[1] }}
           <button @click="removeFromCart(index)">Rimuovi</button>
         </li>
       </ul>

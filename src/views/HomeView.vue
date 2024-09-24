@@ -23,6 +23,13 @@
               >
                 Aggiungi ai preferiti
               </button>
+              <!-- Pulsante per vedere i dettagli -->
+              <router-link
+                :to="'/product/' + product.id"
+                class="btn btn-info fixed-size-btn"
+              >
+                Vedi Dettagli
+              </router-link>
             </div>
           </div>
         </div>
