@@ -166,6 +166,12 @@ h3 {
 }
 p {
   color: black !important;
+  width: 100%;
+}
+
+.btn-success {
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 @media (max-width: 576px) {
