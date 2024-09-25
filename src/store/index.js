@@ -11,26 +11,30 @@ export default createStore({
         {
           id: 1,
           name: "Pasta",
-          description: "Descrizione Prodotto 1",
-          price: 10,
+          description:
+            "Alimento base della cucina italiana, disponibile in vari formati. Perfetta per piatti con sugo.",
+          price: 2,
         },
         {
           id: 2,
           name: "Carne",
-          description: "Descrizione Prodotto 2",
-          price: 20,
+          description:
+            "Fonte ricca di proteine, ideale per grigliate, arrosti e piatti tradizionali.",
+          price: 9,
         },
         {
           id: 3,
           name: "Verdure",
-          description: "Descrizione Prodotto 3",
-          price: 30,
+          description:
+            "Fresche e nutrienti, ideali per contorni, insalate e zuppe.",
+          price: 5,
         },
         {
           id: 4,
           name: "Frutta",
-          description: "Descrizione Prodotto 4",
-          price: 30,
+          description:
+            "Ricca di vitamine, perfetta per snack salutari o dessert naturali.",
+          price: 6,
         },
       ],
     };

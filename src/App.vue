@@ -1,6 +1,7 @@
 <template>
   <div class="">
     <nav>
+      <h1 id="open-fridge">OpenFridge</h1>
       <router-link to="/">Home</router-link> |
       <router-link to="/Carrello">Carrello</router-link> |
       <router-link to="/about">About</router-link> |
@@ -40,6 +41,7 @@ export default {
   background-color: black;
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 
 html,
@@ -57,7 +59,7 @@ body {
 
 nav {
   padding: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 nav a {
@@ -100,5 +102,17 @@ h3,
 p,
 a {
   color: white !important;
+}
+
+#open-fridge {
+  color: orange !important;
+  font-size: 100px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 728px) {
+  #open-fridge {
+    font-size: 60px;
+  }
 }
 </style>

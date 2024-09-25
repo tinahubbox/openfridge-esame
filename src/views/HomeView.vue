@@ -132,6 +132,10 @@ h1 {
   margin-bottom: 40px;
 }
 
+h2 {
+  margin-bottom: 20px;
+}
+
 .card-body {
   background-color: white;
   display: flex;

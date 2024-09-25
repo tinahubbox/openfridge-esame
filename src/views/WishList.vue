@@ -46,17 +46,38 @@ export default {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .preferiti-item {
-  display: inline-block; /* Assicura che ogni elemento della lista sia trattato come un blocco inline */
+  display: inline-block;
   background-color: #333;
   color: white;
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
   text-align: center;
-  width: 100%; /* Assicura che l'elemento si estenda su tutta la larghezza disponibile */
-  max-width: 400px; /* Imposta una larghezza massima per un aspetto più equilibrato */
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+@media (min-width: 576px) {
+  .preferiti-item {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (min-width: 768px) {
+  .preferiti-item {
+    width: calc(33.33% - 20px);
+  }
+}
+
+@media (min-width: 992px) {
+  .preferiti-item {
+    width: calc(25% - 20px);
+  }
 }
 </style>

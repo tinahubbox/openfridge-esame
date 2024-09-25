@@ -13,9 +13,11 @@ export default {
   data() {
     return {
       products: [
-        { name: "Prodotto 1", price: 10 },
-        { name: "Prodotto 2", price: 20 },
-        { name: "Prodotto 3", price: 30 },
+        { name: "ProdottoEsempio", price: 0 },
+        { name: "Pasta", price: 2 },
+        { name: "Carne", price: 9 },
+        { name: "Verdure", price: 5 },
+        { name: "Frutte", price: 6 },
       ],
     };
   },
