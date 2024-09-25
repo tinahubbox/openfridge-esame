@@ -3,30 +3,30 @@
     <div class="row">
       <h1>Prodotti Disponibili</h1>
       <div v-for="product in products" :key="product.id" class="col-md-6 mb-4">
-        <div class="product card">
-          <div class="card-body">
+        <div class="product card h-100">
+          <div class="card-body d-flex flex-column">
             <h3 class="card-title">{{ product.name }}</h3>
             <p class="card-text">{{ product.description }}</p>
             <p>Prezzo: €{{ product.price }}</p>
             <div
-              class="button-group d-flex justify-content-center align-items-center"
+              class="mt-auto button-group d-flex justify-content-between flex-wrap"
             >
               <button
                 @click="addToCart(product)"
-                class="btn btn-primary fixed-size-btn"
+                class="btn btn-primary flex-fill w-100 mb-2"
               >
                 Aggiungi al carrello
               </button>
               <button
                 @click="addToWishlist(product)"
-                class="btn btn-secondary fixed-size-btn"
+                class="btn btn-secondary flex-fill w-100 mb-2"
               >
                 Aggiungi ai preferiti
               </button>
               <!-- Pulsante per vedere i dettagli -->
               <router-link
                 :to="'/product/' + product.id"
-                class="btn btn-info fixed-size-btn"
+                class="btn btn-info flex-fill w-100"
               >
                 Vedi Dettagli
               </router-link>
@@ -93,9 +93,24 @@ h1 {
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   padding: 20px;
+}
+
+.card {
+  height: 100%;
+}
+
+button,
+.btn {
+  flex: 1;
+  margin: 0 5px;
+  text-align: center;
+  background-color: black;
+  border-color: black;
+}
+
+.button-group {
+  width: 100%;
 }
 
 h3 {
@@ -106,29 +121,15 @@ p {
   color: black !important;
 }
 
-button {
-  background-color: black;
-  border-color: black;
-}
-
-.button-group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
-.fixed-size-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  margin: 0;
-}
-
-@media (min-width: 576px) {
+@media (max-width: 576px) {
   .button-group {
-    flex-direction: row;
+    flex-direction: column;
+  }
+
+  button,
+  .btn {
+    width: 100%;
+    margin: 5px 0;
   }
 }
 </style>

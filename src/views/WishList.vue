@@ -5,8 +5,12 @@
   <div class="preferiti">
     <h1>I tuoi prodotti preferiti</h1>
     <div v-if="$store.state.favourites && $store.state.favourites.length > 0">
-      <ul>
-        <li v-for="(item, index) in $store.state.favourites" :key="index">
+      <ul class="preferiti-list">
+        <li
+          v-for="(item, index) in $store.state.favourites"
+          :key="index"
+          class="preferiti-item"
+        >
           <p>{{ item.name }}</p>
           <!-- Assumendo che "item" abbia una proprietà "name" -->
         </li>
@@ -38,5 +42,21 @@ export default {
 </script>
 
 <style scoped>
-/* Stili per la visualizzazione del carrello */
+.preferiti-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.preferiti-item {
+  display: inline-block; /* Assicura che ogni elemento della lista sia trattato come un blocco inline */
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  text-align: center;
+  width: 100%; /* Assicura che l'elemento si estenda su tutta la larghezza disponibile */
+  max-width: 400px; /* Imposta una larghezza massima per un aspetto più equilibrato */
+}
 </style>
