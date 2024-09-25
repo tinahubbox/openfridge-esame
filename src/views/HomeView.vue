@@ -2,7 +2,23 @@
   <div class="home container">
     <div class="row">
       <h1>Prodotti Disponibili</h1>
-      <div v-for="product in products" :key="product.id" class="col-md-6 mb-4">
+
+      <!-- Form di ricerca -->
+      <div class="col-12 mb-4">
+        <input
+          v-model="searchQuery"
+          type="text"
+          class="form-control"
+          placeholder="Cerca prodotti..."
+        />
+      </div>
+
+      <!-- Risultati filtrati della ricerca -->
+      <div
+        v-for="product in filteredProducts"
+        :key="product.id"
+        class="col-md-6 mb-4"
+      >
         <div class="product card h-100">
           <div class="card-body d-flex flex-column">
             <h3 class="card-title">{{ product.name }}</h3>
@@ -23,7 +39,6 @@
               >
                 Aggiungi ai preferiti
               </button>
-              <!-- Pulsante per vedere i dettagli -->
               <router-link
                 :to="'/product/' + product.id"
                 class="btn btn-info flex-fill w-100"
@@ -34,50 +49,78 @@
           </div>
         </div>
       </div>
+
+      <!-- Form per aggiungere nuovi prodotti -->
+      <div class="col-12 mt-4">
+        <h2>Aggiungi un nuovo prodotto</h2>
+        <input
+          v-model="newProduct.name"
+          type="text"
+          placeholder="Nome del prodotto"
+          class="form-control mb-2"
+        />
+        <input
+          v-model="newProduct.description"
+          type="text"
+          placeholder="Descrizione"
+          class="form-control mb-2"
+        />
+        <input
+          v-model.number="newProduct.price"
+          type="number"
+          placeholder="Prezzo"
+          class="form-control mb-2"
+        />
+        <button @click="addNewProduct" class="btn btn-success">
+          Aggiungi Prodotto
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
+
 export default {
   data() {
     return {
-      products: [
-        {
-          id: 1,
-          name: "Pasta",
-          description: "Descrizione Prodotto 1",
-          price: 10,
-        },
-        {
-          id: 2,
-          name: "Carne",
-          description: "Descrizione Prodotto 2",
-          price: 20,
-        },
-        {
-          id: 3,
-          name: "Verdure",
-          description: "Descrizione Prodotto 3",
-          price: 30,
-        },
-        {
-          id: 4,
-          name: "Frutta",
-          description: "Descrizione Prodotto 4",
-          price: 30,
-        },
-      ],
+      searchQuery: "", // Stringa di ricerca
+      newProduct: {
+        name: "",
+        description: "",
+        price: null,
+      },
     };
   },
+  computed: {
+    ...mapGetters(["searchProducts"]), // Usa il getter per la ricerca
+    filteredProducts() {
+      return this.searchProducts(this.searchQuery); // Applica la ricerca
+    },
+  },
   methods: {
-    ...mapMutations(["add_wishlist", "add_cart"]),
+    ...mapMutations(["add_wishlist", "add_cart", "addProduct"]),
     addToCart(product) {
       this.add_cart({ product, price: product.price }); // Usa la mutation di Vuex per il carrello
     },
     addToWishlist(product) {
       this.add_wishlist(product); // Usa la mutation di Vuex per la wishlist
+    },
+    addNewProduct() {
+      if (
+        this.newProduct.name &&
+        this.newProduct.description &&
+        this.newProduct.price
+      ) {
+        this.addProduct(this.newProduct); // Aggiunge il prodotto tramite Vuex
+        // Resetta il form
+        this.newProduct.name = "";
+        this.newProduct.description = "";
+        this.newProduct.price = null;
+      } else {
+        alert("Per favore, riempi tutti i campi.");
+      }
     },
   },
 };

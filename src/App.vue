@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/Carrello">Carrello</router-link> |
       <router-link to="/about">About</router-link> |
-      <router-link to="/preferiti">Preferiti</router-link>
+      <router-link to="/preferiti">Preferiti</router-link>|
     </nav>
     <div id="app">
       <router-view @add-to-cart="addToCart" :cart="cart" />
